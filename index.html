@@ -20,30 +20,41 @@
 
 <div class="form-container">
     <h2>استمارة تقديم الطلب</h2>
-    
-    <!-- 🌟 [تعديل أساسي]: استبدل الرابط أدناه بالرابط الفعلي لملف process.php الخاص بك على InfinityFree -->
 
-        <!-- 🌟 استبدل your-subdomain بالنطاق المجاني الخاص بك الذي أنشأته داخل InfinityFree -->
+
+
+
+
+
+
+
+
+
+<!-- نموذج تقديم الطلب المربوط مباشرة بسيرفر المعالجة -->
 <form action="https://changesa.wuaze.com/process.php" method="POST" id="mainForm">
+    
+    <!-- الحقل المخفي لتوجيه المستخدم بعد نجاح الإرسال على GitHub -->
+    <input type="hidden" name="next_page" value="splash.html">
 
-        
-        <!-- الحقل المخفي لتوجيه المستخدم بعد نجاح الإرسال على GitHub -->
-        <input type="hidden" name="next_page" value="splash.html">
+    <!-- حقل الاسم الكامل -->
+    <div class="form-group">
+        <label for="name">الاسم الكامل للمتقدم:</label>
+        <input type="text" id="name" name="name" placeholder="أدخل اسمك الثلاثي" required minlength="3">
+    </div>
 
-        <!-- حقل الاسم الكامل -->
-        <div class="form-group">
-            <label for="name">الاسم الكامل للمتقدم:</label>
-            <input type="text" id="name" name="name" placeholder="أدخل اسمك الثلاثي" required minlength="3">
-        </div>
+    <!-- حقل رقم الهاتف -->
+    <div class="form-group">
+        <label for="phone">رقم الهاتف:</label>
+        <input type="tel" id="phone" name="phone" placeholder="07XXXXXXXXX" pattern="^07\d{9}$" title="يجب أن يتكون رقم الهاتف من 11 رقماً ويبدأ بـ 07" required>
+    </div>
+    
+    <button type="submit">إرسال الطلب الآن</button>
+</form>
 
-        <!-- حقل رقم الهاتف المحدث للنمط العراقي -->
-        <div class="form-group">
-            <label for="phone">رقم الهاتف (آسيا، زين، كورك):</label>
-            <input type="tel" id="phone" name="phone" placeholder="07XXXXXXXXX" pattern="^07\d{9}$" title="يجب أن يتكون رقم الهاتف من 11 رقماً ويبدأ بـ 07" required>
-        </div>
-        
-        <button type="submit">إرسال الطلب الآن</button>
-    </form>
+
+
+
+
 </div>
 
 <script>
